@@ -6,6 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    lllll
+<div id="app">
+    <ul>
+        <li v-for="(student,index) in students">
+            <span>序号：{{index}}</span>
+            <span>姓名：{{student.name}}</span>
+            <span>年纪：{{student.age}}</span>
+            
+        </li>
+    </ul>
+</div>
+<script src="./vue .js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+           students:[
+        {
+            name:'zhangsan ',
+            age:16
+        },
+        {
+            name:'lisi',
+            age:15
+        },
+        {
+            name:'wangwu',
+            age:16
+        }
+           ]
+    }
+    })
+</script>
 </body>
 </html>
