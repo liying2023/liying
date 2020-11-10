@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            background-color:red;
+        }
+        #div2{
+            width:100px;
+            height:100px;
+            background-color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="div1" v-on:click.once="fn1">
+            div1
+            <div id="div2" @click.stop="fn2">div2</div>
+        </div>
+    </div>
+    <a v-on:click.once="fn3" href="https:www.baidu.com">百度一下</a>
+    <script src="./vue .js"></script>
+    <script>
+       let vm=new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+                fn1(){
+                    console.log('div1');
+                },
+                fn2(){
+                    console.log('div2');
+                },
+                fn3()
+                {
+                   console.log('66'); 
+                }
+            }  
+        })
+    </script>
+
+</body>
+</html>
