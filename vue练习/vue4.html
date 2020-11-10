@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            background-color:red;
+        }
+        .div2{
+            background-color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="{div1:isDiv1,div2:isDiv2}">结果告诉我她98年</div>
+        <button @click="change" >红花会</button>
+    </div>
+    <script src="../vue .js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                isDiv1:false,
+                isDiv2:true
+
+
+            },
+            methods:{
+                change(){
+                    this.isDiv1=!this.isDiv1;
+                    this.isDiv2=!this.isDiv2;
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
