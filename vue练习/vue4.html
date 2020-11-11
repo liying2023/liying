@@ -8,14 +8,21 @@
         .div1{
             background-color:red;
         }
-        .div2{
+         .div2{
             background-color:blue;
         }
+        
+        
+        
+       
     </style>
 </head>
 <body>
     <div id="app">
         <div v-bind:class="{div1:isDiv1,div2:isDiv2}">结果告诉我她98年</div>
+        <div :class="['div1',isDiv2?'div2':'']">结果告诉我她98年</div>
+        <div :index="indexName"></div>
+        <div :id="李京泽"></div>
         <button @click="change" >红花会</button>
     </div>
     <script src="../vue .js"></script>
@@ -24,8 +31,9 @@
             el:'#app',
             data:{
                 isDiv1:false,
-                isDiv2:true
-
+                isDiv2:true,
+                indexName:66,
+                李京泽:'贝贝'
 
             },
             methods:{
