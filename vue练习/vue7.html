@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in list">
+                {{item}}
+            </li>
+        </ul>
+        <button v-on:click="change">改变</button>
+    </div>
+    <script src="../vue .js"></script>
+    <script>
+        let vm=new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    1,2,3,4
+                ]
+
+            },
+            methods:{
+                change(){
+                    // this.list[1]=888
+                    // console.log(this.list);
+                    Vue.set(this.list,1,666)
+                    this.$set(this.list,2,999)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
