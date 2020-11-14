@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <p v-html="msg"></p>
+    <p v-text="msg"></p>
+    
+    <ul>
+        <button @click="add('hahaha',$event)">添加</button>
+        <li v-for="(student,index) in students">
+            <span>序号：{{index+2}}</span>
+            <span>姓名：{{student.name}}</span>
+            <span>年纪：{{student.age}}</span>
+            
+        </li>
+    </ul>
+</div>
+<script src="../vue .js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            // msg:'白天睡觉晚上吼，纯白色的粉末在板上走',
+            msg:'<a href=""> 红花会</a>',
+           students:[
+        {
+            name:'zhangsan ',
+            age:16
+        },
+        {
+            name:'lisi',
+            age:15
+        },
+        {
+            name:'wangwu',
+            age:16
+        }
+           ]
+    },
+    methods:{
+        add(aaa,b){
+            this.students.push({
+                name:'lijingze',
+                age:18
+            });
+            // console.log(event);
+            console.log(aaa);
+            console.log(b);
+        }
+    }
+    })
+</script>
+</body>
+</html>

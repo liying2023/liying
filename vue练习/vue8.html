@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }，
+        #app{
+            width:400px;
+            margin:50px auto;
+        }
+       ul {
+           border-bottom:1px solid #000
+       }
+       .list{
+           height:40px;
+           line-height:40px ;
+           width: 200px;
+           display: flex;
+           justify-content: space-between;
+           background-color:pink;
+           margin-bottom: 10px;
+       }
+       .active{
+           background-color:red;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>商品列表</h1>
+        <ul>
+            <li class="list" v-for="item in list" @click="change(item)" 
+            v-bind:class={active:item.isActive}>
+                <span>{{item.name}}</span>
+                <span>{{item.price}}</span>
+            </li>
+        </ul>
+        <p> 总价：{{sum() }}</p>
+    </div>
+    <script src="../vue .js"></script>
+    <script>
+        let vm=new Vue({
+            el:'#app',
+            data:{
+                list:[
+                     {name:'衣服',
+                     price:500,
+                         isActive:false},
+                 {name:'裤子',
+                     price:300,
+                     isActive:false},
+                     {name:'鞋',
+                     price:1000,
+                     isActive:false},
+
+                ]
+
+            },
+            methods:{
+                change(ooo){
+                    ooo.isActive=!ooo.isActive;
+                },
+                sum(){
+                    let count=0;
+                    this.list.forEach((obj,index)=>{
+                        if(obj.isActive){
+                            count+=obj.price;
+                        }
+
+                    })
+                   this.total=count
+                        
+                    }
+                }
+            }
+        )
+    </script>
+</body>
+</html>
