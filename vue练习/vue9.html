@@ -8,6 +8,7 @@
 <body>
     <div id="app">
         <p>{{name}}</p>
+        <button @click="change">改变</button>
     </div>
     <script src="../vue .js">
     </script>
@@ -16,17 +17,39 @@
             el:'#app',
             data:{
                 firstName:'Jack',
-                lastName:'Smith'
+                lastName:'Smith',
+                a:9,
+                b:10,
 
             },
             computed: {
                 name(){
-                    return this.firstName+'  '+this.lastName;
+                    
+                    
+                },
+                name:{
+                    get(){
+                        console.log('get');
+                        return this.firstName+'  '+this.lastName;
+
+                    },
+                    set(){
+                        console.log('set');
+                    }
                 }
             },
             methods: {
+                change(){
+                    this.a+=1;
+                }
                 
             },
+            watch:{
+                a:function(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                }
+
+            }
         })
 
     </script>
