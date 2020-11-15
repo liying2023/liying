@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+        <div v-for="item in list">
+        <h3 >{{item}}</h3>
+        <h5 >{{item}}</h5>
+      
+   
+    <my-component title="加油" v-bind:msg="msg"></my-component> 
+</div>
+    <template v-for="item in list">
+        <h3 >{{item}}</h3>
+        <h5 >{{item}}</h5>
+        
+    </template>
+    <tpl title="如果我是Dj你会爱我吗"></tpl>
+    </div>
+    <div id="app2">
+        <my-component title="我的组件2"></my-component>
+    </div>
+    <my-component title="我的组件2"></my-component>
+    <script src="../vue .js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:'<div> {{title}} {{msg}}</div>  ',
+            props:['title','msg']
+        })
+        let vm1=new Vue({
+            el:'#app1',
+            data:{
+                list:[1,2,3], 
+                msg:'hello world'
+            },
+            components:{
+                'tpl':{
+                    template:'<div> {{title}} 啦啦啦</div>',
+                    props:['title']
+                }
+            }
+        })
+        let vm2=new Vue({
+            el:'#app2',
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>
