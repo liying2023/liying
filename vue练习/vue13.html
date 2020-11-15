@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="add1">加加加</button>
+        <!-- <my-component :message="msg" :fn1="add1"></my-component> -->
+        <my-component :message="msg" @son="add1"></my-component>
+        {{count}}
+    </div>
+    <template id="tpl">
+        <div>
+           <h4>{{message}}</h4>
+           <button @click="add2">++++</button>
+        </div>
+    </template>
+    <script src="../vue .js"></script>
+    <script>
+        let vm= new Vue({
+            el:'#app',
+            data:{
+                msg:'好好学习才是好孩子',
+                count:0
+            },
+            methods:{
+                add1(){
+                    this.count++;
+                }
+            },
+            components:{
+                'my-component':{
+                    template:'#tpl',
+                    props:['message','fn1'],
+                
+                data(){
+                    return{
+
+                    }
+                },
+                methods:{
+                    add2(){
+                        // vm.count++;
+                        // this.fn1();
+                        this.$emit('son')
+                    }
+                }
+            },
+            }
+        })
+    </script>
+</body>
+</html>
