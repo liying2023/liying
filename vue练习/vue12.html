@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"> 
+       <com></com> 
+      <my-com title="haha">
+          <p slot="slot1">好好学习天天向上1</p>
+          <p slot="slot2">好好学习天天向上2</p>
+      </my-com>
+    
+    </div>
+    <template id="my-com">
+        <div>
+            {{title}}
+            {{msg}}
+            <slot name="slot2"></slot>
+            <h1>八英里</h1>
+            <p>谢谢你</p>
+        
+        <slot name="slot1"></slot>
+        <button @click="add">点我</button>
+        {{count}}
+       
+    </div>
+    </template>
+
+
+    <script src="../vue .js"></script>
+    <script>
+        let tpl=`<div>
+        <h6>hello world</h6>
+    </div>`
+        let vm=new Vue({
+            el:'#app',
+            
+            components:{
+                'com':{
+                    template:tpl,
+                },
+                'my-com':{
+                    template:'#my-com',
+                    props:['title'],
+                    data(){
+                        return {
+                            msg:'坚持就是胜利',
+                            count:0
+                        }
+                    },
+                    methods:{
+                add(){
+                    this.count++;
+                }
+            },
+                }
+            }
+        })
+    </script>
+</body>
+</html>
