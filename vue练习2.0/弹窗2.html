@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div id="content">
+            <button @click="showLogin" >登录</button>
+            <button @click="showRegister">注册</button>
+        </div>
+        <my-dialog title="登录" v-show="isLogin" @close="hide">
+           <div>
+                <label >姓名</label>
+                <input type="text">
+           </div>
+           <div>
+                <label >密码</label>
+                <input type="text">
+           </div>
+        </my-dialog>
+        <my-dialog title="注册" v-show="isRegister" @close="hide">
+           <div>
+                <label >姓名</label>
+                <input type="text">
+           </div>
+           <div>
+                <label >密码</label>
+                <input type="text">
+           </div>
+           <div>
+                <label >确认密码</label>
+                <input type="text">
+           </div>
+
+        </my-dialog>
+
+    </div>
+
+    <template id="tpl">
+      <div>
+          <header>{{title}}
+              <span @click="shut">X</span>
+          </header>
+          <main>
+            <slot></slot>
+          </main>
+          <footer>
+              <button @click="shut">{{title}}</button>
+          </footer>
+          
+      </div>
+    </template>
+    <script src="../vue .js"></script>
+    <script>
+        let vm =new Vue({
+            el:'#app',
+            data:{
+                isLogin:false,
+                isRegister:false
+                 
+            },
+            methods:{
+                showLogin(){
+                    this.isLogin=true;
+                    this.isRegister=false
+
+                },
+                showRegister(){
+                    this.isRegister=true;
+                    this.isLogin=false
+
+                },
+                hide(){
+                    this.isRegister=false;
+                    this.isLogin=false
+
+                }
+            
+            },
+            components:{
+               'myDialog':{
+                 template:'#tpl',
+                 props:['title'] ,
+                 methods:{
+                     shut(){
+                         this.$emit('close')
+
+                     }
+                 }
+               }
+            }
+        })
+    </script>
+</body>
+</html>
