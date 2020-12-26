@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app1">
+        <my-component title="加油" :aaa="msg"  @son="add1"></my-component>
+        <button @click="add1">加</button>
+        {{count}}
+        <tpl1></tpl1>
+    </div>
+    <div id="app2">
+        <my-component title="加油" :aaa="msg" @son="add1" ></my-component>
+        <button @click="add1">加</button>
+        {{count}}
+        <tpl3></tpl3>
+    </div>
+    <script src="../vue .js"></script>
+    <script>
+        Vue.component('myComponent',{
+            template:`<div>{{title}} {{aaa}}
+                <button @click="add">+++++</button>
+                </div>`,
+            props:[
+                'title' ,'aaa'
+            ],
+            methods:{
+                add(){
+                    this.$emit('son')
+
+
+                }
+
+            }
+        })
+        let vm1= new Vue({
+            el:'#app1',
+            data:{
+                msg:"学习需要长久坚持",
+                count:0
+
+            },
+            methods:{
+                add1(){
+                    this.count++
+                }
+
+            },
+            components:{
+                'tpl1':{
+                    template:'<div>我要变优秀 </div>'
+                },
+                'tpl2':{
+                    template:''
+                }
+            }
+
+        })
+        let vm2=new Vue({
+            el:'#app2',
+            data:{
+                msg:'坚持就是胜利',
+                count:0
+
+            },
+            methods:{
+                add1(){
+                    this.count++
+                }
+               
+
+            },
+            components:{
+              'tpl3':{
+                  template:`<div>哎 自学好烦我好难
+                    <button>按钮</button>
+                    </div>`
+              }
+            }
+        })
+    </script>
+</body>
+</html>
